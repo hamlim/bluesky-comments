@@ -1,0 +1,48 @@
+{
+  "name": "@hamstack/bluesky-comments",
+  "version": "0.0.1",
+  "description": "A minimal suite of components to render Bluesky comments.",
+  "homepage": "https://github.com/hamlim/bluesky-comments/tree/main/packages/bluesky-comments",
+  "author": {
+    "name": "Matt Hamlin",
+    "email": "matthewjameshamlin@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamlim/bluesky-comments.git",
+    "directory": "packages/bluesky-comments"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist", "CHANGELOG.md", "README.md"],
+  "type": "module",
+  "devDependencies": {
+    "@atproto/api": "0.14.8",
+    "@swc/cli": "0.3.10",
+    "@swc/core": "1.4.2",
+    "@types/bun": "1.1.11",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "hohoro": "0.3.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "typescript": "5.4.5"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "@atproto/api": "*"
+  },
+  "scripts": {
+    "dev": "node --watch-path=./src dev.mjs",
+    "build": "hohoro-experimental",
+    "type-check": "tsc -p ./tsconfig.json",
+    "lint": "biome lint ./src/",
+    "test": "bun test",
+    "prepub": "bun run build && bun run type-check && bun run lint && bun run test",
+    "pub": "npm publish --access public"
+  }
+}
