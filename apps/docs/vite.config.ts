@@ -34,6 +34,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "#utils/*": "./src/utils/*",
+      "#components/*": "./src/components/*",
     },
   },
   plugins: [mdxPlugin],

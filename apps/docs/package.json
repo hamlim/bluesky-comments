@@ -12,14 +12,20 @@
     "deploy": "wrangler deploy"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.2",
+    "@radix-ui/react-tabs": "^1.1.3",
     "hono": "4.6.20",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-server-dom-webpack": "19.0.0",
     "waku": "0.21.22",
-    "wrangler": "3.109.1"
+    "wrangler": "3.109.1",
+    "lucide-react": "0.435.0",
+    "@local/utils": "workspace:*",
+    "class-variance-authority": "0.7.0"
   },
   "imports": {
+    "#components/*": "./src/components/*",
     "#utils/*": "./src/utils/*"
   },
   "devDependencies": {

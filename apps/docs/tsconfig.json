@@ -12,7 +12,8 @@
     "types": ["react/experimental", "./.wrangler/types/runtime.d.ts"],
     "jsx": "react-jsx",
     "paths": {
-      "#utils/*": ["./src/utils/*"]
+      "#utils/*": ["./src/utils/*"],
+      "#components/*": ["./src/components/*"]
     }
   }
 }

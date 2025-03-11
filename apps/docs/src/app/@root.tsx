@@ -17,7 +17,12 @@ export default function Root({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head suppressHydrationWarning>
-        <title>Garbanzo</title>
+        <title>Bluesky Comments</title>
+        <meta
+          name="description"
+          content="Add comments to any URL, powered by Bluesky!"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>
         <script
