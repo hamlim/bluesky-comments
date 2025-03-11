@@ -1,4 +1,6 @@
 /// <reference lib="dom" />
+"use client";
+
 import {
   AppBskyFeedDefs,
   type AppBskyFeedGetPostThread,

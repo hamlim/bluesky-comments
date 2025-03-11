@@ -8,6 +8,8 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
+import macros from "unplugin-macros/vite";
+
 let mdxPlugin = mdx({
   remarkPlugins: [
     remarkFrontmatter,
@@ -37,5 +39,5 @@ export default defineConfig({
       "#components/*": "./src/components/*",
     },
   },
-  plugins: [mdxPlugin],
+  plugins: [mdxPlugin, macros()],
 });

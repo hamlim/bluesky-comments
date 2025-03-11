@@ -6,6 +6,12 @@
 /* Second source is if the process is running from the app dir */
 @source "../../../node_modules/@local/components";
 
+/* This kinda sucks */
+/* First source is if the process is running from the root of the repo */
+@source "../node_modules/@hamstack/bluesky-comments";
+/* Second source is if the process is running from the app dir */
+@source "../../../node_modules/@hamstack/bluesky-comments";
+
 @theme {
   --color-primary: var(--color-emerald-500);
   --color-secondary: var(--color-blue-500);
@@ -220,19 +226,19 @@ html.dark .shiki span {
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: var(--uchu-purple-5);
+  --primary: var(--uchu-green-5);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: var(--uchu-purple-5);
+  --secondary: var(--uchu-green-5);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: var(--uchu-purple-5);
+  --accent: var(--uchu-green-5);
   --accent-foreground: var(--uchu-yin-1);
   --destructive: var(--uchu-red-5);
   --destructive-foreground: var(--uchu-red-1);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: var(--uchu-purple-5);
+  --ring: var(--uchu-green-5);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -250,8 +256,8 @@ html.dark .shiki span {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
 
-  --font-geist-sans: "Helvetica", sans-serif;
-  --font-geist-mono: "Helvetica", monospace;
+  --font-geist-sans: "GeistSans", "Helvetica", sans-serif;
+  --font-geist-mono: "GeistMono", "Helvetica", monospace;
 }
 
 .dark {
@@ -261,19 +267,19 @@ html.dark .shiki span {
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: var(--uchu-purple-2);
+  --primary: var(--uchu-green-2);
   --primary-foreground: oklch(0.205 0 0);
-  --secondary: var(--uchu-purple-2);
+  --secondary: var(--uchu-green-2);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: var(--uchu-purple-2);
+  --accent: var(--uchu-green-2);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: var(--uchu-red-5);
   --destructive-foreground: var(--uchu-red-1);
   --border: oklch(0.269 0 0);
   --input: oklch(0.269 0 0);
-  --ring: var(--uchu-purple-2);
+  --ring: var(--uchu-green-2);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -340,12 +346,12 @@ html.dark .shiki span {
 }
 
 /* Custom fonts */
-@font-face {
+/* @font-face {
   font-family: "GeistSans";
   src: url("/geist-regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
-}
+} */
 
 @font-face {
   font-family: "GeistMono";

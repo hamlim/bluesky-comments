@@ -6,7 +6,7 @@ import type { PathsForPages } from "waku/router";
 
 import layout0 from "./app/@layout";
 import root1 from "./app/@root";
-import page2 from "./app/page.static.mdx";
+import page2 from "./app/page";
 
 let pages = createPages(async ({ createPage, createLayout, createRoot, createApi }) => [
 createLayout({
@@ -19,7 +19,7 @@ createRoot({
   component: root1,
 }),
 createPage({
-  render: "static",
+  render: "dynamic",
   path: "/",
   component: page2,
 }),
