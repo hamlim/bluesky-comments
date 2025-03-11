@@ -1,5 +1,6 @@
 import { CommentSection } from "@hamstack/bluesky-comments";
 import { StarIcon } from "lucide-react";
+import { Anchor } from "#components/anchor";
 import { CopyButton } from "#components/copy-button";
 import { Button } from "#components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "#components/ui/tabs";
@@ -128,11 +129,9 @@ export default function Homepage() {
         <mdxComponents.h2>About:</mdxComponents.h2>
         <p>
           This library is a fork of the original{" "}
-          <Button asChild variant="link">
-            <a href="https://www.npmjs.com/package/bluesky-comments">
-              bluesky-comments
-            </a>
-          </Button>{" "}
+          <Anchor href="https://www.npmjs.com/package/bluesky-comments">
+            bluesky-comments
+          </Anchor>{" "}
           package.
         </p>
         <p>This fork makes the following core changes:</p>
@@ -149,25 +148,21 @@ export default function Homepage() {
       <footer className={sectionClasses}>
         <p>
           The source code for the library is available on{" "}
-          <Button asChild variant="link">
-            <a href="https://github.com/hamlim/bluesky-comments">GitHub</a>
-          </Button>
+          <Anchor href="https://github.com/hamlim/bluesky-comments">
+            GitHub
+          </Anchor>
           . If you run into any bugs, please report them via{" "}
-          <Button asChild variant="link">
-            <a href="https://github.com/hamlim/bluesky-comments/issues/new">
-              issues
-            </a>
-          </Button>
+          <Anchor href="https://github.com/hamlim/bluesky-comments/issues/new">
+            issues
+          </Anchor>
           .
         </p>
         <p>
           If you&apos;d like to discuss changes to the project, feel free to
           start a{" "}
-          <Button asChild variant="link">
-            <a href="https://github.com/hamlim/bluesky-comments/discussions/new/choose">
-              discussion
-            </a>
-          </Button>
+          <Anchor href="https://github.com/hamlim/bluesky-comments/discussions/new/choose">
+            discussion
+          </Anchor>
           !
         </p>
       </footer>
