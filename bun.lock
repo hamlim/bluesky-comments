@@ -28,7 +28,7 @@
         "wrangler": "3.109.1",
       },
       "devDependencies": {
-        "@garbanzo/cli": "*",
+        "@garbanzo/cli": "0.1.2",
         "@mdx-js/mdx": "3.1.0",
         "@mdx-js/rollup": "3.1.0",
         "@shikijs/rehype": "2.4.2",
@@ -256,7 +256,7 @@
 
     "@floating-ui/utils": ["@floating-ui/utils@0.2.9", "", {}, "sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg=="],
 
-    "@garbanzo/cli": ["@garbanzo/cli@0.1.1", "", { "dependencies": { "giget": "1.2.4", "mri": "1.2.0" }, "bin": { "garbanzo": "cli.mjs" } }, "sha512-on05Eg1VepAUWY1QWbSZtTEGAd5uKYbTxbJJ2GHb+RETGT0iZIRGpZo1c705Kk0DAFF7VK37i+pDoK/3cuapDg=="],
+    "@garbanzo/cli": ["@garbanzo/cli@0.1.2", "", { "dependencies": { "giget": "1.2.4", "mri": "1.2.0" }, "bin": { "garbanzo": "cli.mjs" } }, "sha512-BYWg5Y0n0sHoU5TJQN6AReqfCdga0FDSFeMbiWcsFoKUY+i+ahvU7L49wbbpjoXq+lTv2zI5GQBbbAuL/yBRJA=="],
 
     "@hamstack/bluesky-comments": ["@hamstack/bluesky-comments@workspace:packages/bluesky-comments"],
 

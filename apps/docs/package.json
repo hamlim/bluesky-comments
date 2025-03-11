@@ -29,7 +29,7 @@
     "#utils/*": "./src/utils/*"
   },
   "devDependencies": {
-    "@garbanzo/cli": "*",
+    "@garbanzo/cli": "0.1.2",
     "@mdx-js/mdx": "3.1.0",
     "@mdx-js/rollup": "3.1.0",
     "@shikijs/rehype": "2.4.2",
