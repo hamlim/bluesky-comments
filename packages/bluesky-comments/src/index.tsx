@@ -158,28 +158,28 @@ function sortByLikes(a: unknown, b: unknown): number {
   );
 }
 
-let MinLikeCountFilter = (
+export function MinLikeCountFilter(
   min: number,
-): ((comment: AppBskyFeedDefs.ThreadViewPost) => boolean) => {
+): (comment: AppBskyFeedDefs.ThreadViewPost) => boolean {
   return (comment: AppBskyFeedDefs.ThreadViewPost) => {
     return (comment.post.likeCount ?? 0) < min;
   };
-};
+}
 
-let MinCharacterCountFilter = (
+export function MinCharacterCountFilter(
   min: number,
-): ((comment: AppBskyFeedDefs.ThreadViewPost) => boolean) => {
+): (comment: AppBskyFeedDefs.ThreadViewPost) => boolean {
   return (comment: AppBskyFeedDefs.ThreadViewPost) => {
     if (!AppBskyFeedPost.isRecord(comment.post.record)) {
       return false;
     }
     return (comment.post.record.text as unknown as string).length < min;
   };
-};
+}
 
-let TextContainsFilter = (
+export function TextContainsFilter(
   text: string,
-): ((comment: AppBskyFeedDefs.ThreadViewPost) => boolean) => {
+): (comment: AppBskyFeedDefs.ThreadViewPost) => boolean {
   return (comment: AppBskyFeedDefs.ThreadViewPost) => {
     if (!AppBskyFeedPost.isRecord(comment.post.record)) {
       return false;
@@ -188,11 +188,11 @@ let TextContainsFilter = (
       .toLowerCase()
       .includes(text.toLowerCase());
   };
-};
+}
 
-let ExactMatchFilter = (
+export function ExactMatchFilter(
   text: string,
-): ((comment: AppBskyFeedDefs.ThreadViewPost) => boolean) => {
+): (comment: AppBskyFeedDefs.ThreadViewPost) => boolean {
   return (comment: AppBskyFeedDefs.ThreadViewPost) => {
     if (!AppBskyFeedPost.isRecord(comment.post.record)) {
       return false;
@@ -202,13 +202,11 @@ let ExactMatchFilter = (
       text.toLowerCase()
     );
   };
-};
+}
 
-export let Filters = {
-  MinLikeCountFilter,
-  MinCharacterCountFilter,
-  TextContainsFilter,
-  ExactMatchFilter,
+type PlainFilter = (comment: AppBskyFeedDefs.ThreadViewPost) => boolean;
+
+export let baseFilters: Record<string, PlainFilter> = {
   NoLikes: MinLikeCountFilter(0),
   NoPins: ExactMatchFilter("📌"),
 };
