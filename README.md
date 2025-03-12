@@ -1,25 +1,10 @@
-# Template monorepo
+# `@hamstack/bluesky-comments` Monorepo
 
-This is a template repo in GitHub for creating a fresh monorepo for managing code and documentation.
+This repo contains the [`@hamstack/bluesky-comments`](./packages/bluesky-comments/README.md) library, a React library for rendering comments associated with the current URL - powered by Bluesky 🦋!
 
-For more details on this setup, refer to my blog post here: https://matthamlin.me/2024/february/library-docs-monorepo-template
-
-## Getting Started:
-
-You can get started using this template in 2 ways:
-
-1. via `degit`:
-
-```sh
-bunx --bun degit hamlim/template-monorepo <name-of-your-repo>
-```
-
-2. via GitHub:
-
-- Use this template (see `Use this Template` button near the top right corner of the page)
-- Clone the newly created repo
-
-Once you have a repo setup - you can then install dependencies via `bun install` (if you don't have bun installed locally, refer to their [docs](https://bun.sh)).
+<p align="center">
+  <a href="https://bluesky-comments-docs.mhamlin.workers.dev/">Docs</a> | <a href="https://npm.im/@hamstack/bluesky-comments">NPM</a> | <a href="./packages/bluesky-comments/README.md">Source</a>
+</p>
 
 
 ---
