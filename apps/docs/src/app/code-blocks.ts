@@ -58,7 +58,8 @@ export let authorUsage = transform(
 export let tailwindConfig = transform(
   `
 /* path will depend on where your tailwind root css file is located */
-@source "../node_modules/@hamstack/bluesky-comments";
+/* the dist part of the path is necessary, since that might be ignored by default */
+@source "../node_modules/@hamstack/bluesky-comments/dist/index.js";
 `,
   "css",
 );
