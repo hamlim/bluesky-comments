@@ -14,10 +14,7 @@ const shiki = createHighlighterCoreSync({
 
 function transform(code: string, lang = "shell") {
   return {
-    raw: code
-      .split("\n")
-      .filter((line) => !line.startsWith("#"))
-      .join("\n"),
+    raw: code,
     html: shiki.codeToHtml(code, {
       lang,
       themes: {
@@ -28,21 +25,13 @@ function transform(code: string, lang = "shell") {
   };
 }
 
-export let bunInstall =
-  transform(`# Install the library and it's peer dependencies
-bun install @hamstack/bluesky-comments @atproto/api`);
+export let bunInstall = transform(`bun install @hamstack/bluesky-comments`);
 
-export let yarnInstall =
-  transform(`# Install the library and it's peer dependencies
-yarn add @hamstack/bluesky-comments @atproto/api`);
+export let yarnInstall = transform(`yarn add @hamstack/bluesky-comments`);
 
-export let pnpmInstall =
-  transform(`# Install the library and it's peer dependencies
-pnpm install @hamstack/bluesky-comments @atproto/api`);
+export let pnpmInstall = transform(`pnpm install @hamstack/bluesky-comments`);
 
-export let npmInstall =
-  transform(`# Install the library and it's peer dependencies
-npm install @hamstack/bluesky-comments @atproto/api`);
+export let npmInstall = transform(`npm install @hamstack/bluesky-comments`);
 
 export let uriUsage = transform(
   `import {

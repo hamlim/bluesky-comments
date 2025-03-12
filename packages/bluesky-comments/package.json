@@ -1,6 +1,6 @@
 {
   "name": "@hamstack/bluesky-comments",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A minimal suite of components to render Bluesky comments.",
   "homepage": "https://bluesky-comments-docs.mhamlin.workers.dev",
   "author": {
@@ -33,8 +33,7 @@
     "typescript": "5.4.5"
   },
   "peerDependencies": {
-    "react": "*",
-    "@atproto/api": "*"
+    "react": "*"
   },
   "scripts": {
     "dev": "node --watch-path=./src dev.mjs",

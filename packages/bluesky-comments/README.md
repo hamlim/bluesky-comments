@@ -7,7 +7,7 @@ A partial fork of [`bluesky-comments`](https://github.com/czue/bluesky-comments)
 ## Getting Started:
 
 ```bash
-bun add @hamstack/bluesky-comments @atproto/api
+bun add @hamstack/bluesky-comments
 ```
 
 ## Usage:

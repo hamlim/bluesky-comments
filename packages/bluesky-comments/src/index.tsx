@@ -1,13 +1,71 @@
 /// <reference lib="dom" />
 "use client";
 
-import {
+import type {
   AppBskyFeedDefs,
-  type AppBskyFeedGetPostThread,
+  AppBskyFeedGetPostThread,
   AppBskyFeedPost,
 } from "@atproto/api";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
+
+// Temporarily inlining the following code from @atproto/api
+// it wasn't playing nicely in vite in both the browser and node
+type $Type<Id extends string, Hash extends string> = Hash extends "main"
+  ? Id
+  : `${Id}#${Hash}`;
+
+type $TypedObject<V, Id extends string, Hash extends string> = V extends {
+  $type: $Type<Id, Hash>;
+}
+  ? V
+  : V extends { $type?: string }
+    ? V extends { $type?: infer T extends $Type<Id, Hash> }
+      ? V & { $type: T }
+      : never
+    : V & { $type: $Type<Id, Hash> };
+
+function isObject<V>(v: V): v is V & object {
+  return v != null && typeof v === "object";
+}
+
+function is$type<Id extends string, Hash extends string>(
+  $type: unknown,
+  id: Id,
+  hash: Hash,
+): $type is $Type<Id, Hash> {
+  return hash === "main"
+    ? $type === id
+    : // $type === `${id}#${hash}`
+      typeof $type === "string" &&
+        $type.length === id.length + 1 + hash.length &&
+        $type.charCodeAt(id.length) === 35 /* '#' */ &&
+        $type.startsWith(id) &&
+        $type.endsWith(hash);
+}
+
+function is$typed<V, Id extends string, Hash extends string>(
+  v: V,
+  id: Id,
+  hash: Hash,
+): v is $TypedObject<V, Id, Hash> {
+  return isObject(v) && "$type" in v && is$type(v.$type, id, hash);
+}
+
+const hashThreadViewPost = "threadViewPost";
+
+function isThreadViewPost(v: unknown): v is AppBskyFeedDefs.ThreadViewPost {
+  const id = "app.bsky.feed.defs";
+  return is$typed(v, id, hashThreadViewPost);
+}
+
+function isRecord(v: unknown): v is AppBskyFeedPost.Record {
+  const id = "app.bsky.feed.post";
+  const hashRecord = "main";
+  return is$typed(v, id, hashRecord);
+}
+
+// end inlining
 
 type PlainFilter = (comment: AppBskyFeedDefs.ThreadViewPost) => boolean;
 
@@ -31,7 +89,7 @@ export interface CommentOptions {
 export function Comment({ comment, filters }: CommentProps): ReactNode {
   let author = comment.post.author;
 
-  if (!AppBskyFeedPost.isRecord(comment.post.record)) {
+  if (!isRecord(comment.post.record)) {
     return null;
   }
   // filter out replies that match any of the commentFilters, by ensuring they all return false
@@ -76,7 +134,7 @@ export function Comment({ comment, filters }: CommentProps): ReactNode {
       {comment.replies && comment.replies.length > 0 && (
         <div className="border-l-2 border-[#525252] pl-2">
           {comment.replies.sort(sortByLikes).map((reply) => {
-            if (!AppBskyFeedDefs.isThreadViewPost(reply)) {
+            if (!isThreadViewPost(reply)) {
               return null;
             }
             return (
@@ -151,10 +209,7 @@ function Actions({ post }: { post: AppBskyFeedDefs.PostView }): ReactNode {
 }
 
 function sortByLikes(a: unknown, b: unknown): number {
-  if (
-    !AppBskyFeedDefs.isThreadViewPost(a) ||
-    !AppBskyFeedDefs.isThreadViewPost(b)
-  ) {
+  if (!isThreadViewPost(a) || !isThreadViewPost(b)) {
     return 0;
   }
   return (
@@ -175,7 +230,7 @@ export function MinCharacterCountFilter(
   min: number,
 ): (comment: AppBskyFeedDefs.ThreadViewPost) => boolean {
   return (comment: AppBskyFeedDefs.ThreadViewPost) => {
-    if (!AppBskyFeedPost.isRecord(comment.post.record)) {
+    if (!isRecord(comment.post.record)) {
       return false;
     }
     return (comment.post.record.text as unknown as string).length < min;
@@ -186,7 +241,7 @@ export function TextContainsFilter(
   text: string,
 ): (comment: AppBskyFeedDefs.ThreadViewPost) => boolean {
   return (comment: AppBskyFeedDefs.ThreadViewPost) => {
-    if (!AppBskyFeedPost.isRecord(comment.post.record)) {
+    if (!isRecord(comment.post.record)) {
       return false;
     }
     return (comment.post.record.text as unknown as string)
@@ -199,7 +254,7 @@ export function ExactMatchFilter(
   text: string,
 ): (comment: AppBskyFeedDefs.ThreadViewPost) => boolean {
   return (comment: AppBskyFeedDefs.ThreadViewPost) => {
-    if (!AppBskyFeedPost.isRecord(comment.post.record)) {
+    if (!isRecord(comment.post.record)) {
       return false;
     }
     return (
@@ -414,7 +469,7 @@ export function CommentSection({
       <hr className="mt-2" />
       <div className="mt-2 flex flex-col gap-2">
         {sortedReplies.slice(0, visibleCount).map((reply) => {
-          if (!AppBskyFeedDefs.isThreadViewPost(reply)) return null;
+          if (!isThreadViewPost(reply)) return null;
           return (
             <Comment
               key={reply.post.uri}
@@ -460,7 +515,7 @@ async function getPostThread(
 
   let data = (await res.json()) as AppBskyFeedGetPostThread.OutputSchema;
 
-  if (!AppBskyFeedDefs.isThreadViewPost(data.thread)) {
+  if (!isThreadViewPost(data.thread)) {
     throw new Error("Could not find thread");
   }
 
