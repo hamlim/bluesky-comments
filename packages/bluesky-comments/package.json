@@ -1,8 +1,8 @@
 {
   "name": "@hamstack/bluesky-comments",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A minimal suite of components to render Bluesky comments.",
-  "homepage": "https://github.com/hamlim/bluesky-comments/tree/main/packages/bluesky-comments",
+  "homepage": "https://bluesky-comments-docs.mhamlin.workers.dev",
   "author": {
     "name": "Matt Hamlin",
     "email": "matthewjameshamlin@gmail.com"

@@ -1,15 +1,25 @@
 # `@hamstack/bluesky-comments`
 
-A minimal suite of components to render Bluesky comments.
+A minimal suite of components to render Bluesky comments on any URL!
 
 A partial fork of [`bluesky-comments`](https://github.com/czue/bluesky-comments)!
 
 ## Getting Started:
 
 ```bash
-bun add @hamstack/bluesky-comments
+bun add @hamstack/bluesky-comments @atproto/api
 ```
 
+## Usage:
+
+```tsx
+import {CommentSection} from '@hamstack/bluesky-comments';
+
+<CommentSection uri="<bluesky-uri>" />
+// or
+// to automatically find the most liked post by an author with the current URL referenced:
+<CommentSection author="<handle>" />
+```
 
 ## Contributing:
 
