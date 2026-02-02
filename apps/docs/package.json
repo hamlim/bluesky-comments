@@ -21,7 +21,7 @@
     "react-dom": "19.0.0",
     "react-server-dom-webpack": "19.0.4",
     "waku": "0.21.22",
-    "wrangler": "3.109.1",
+    "wrangler": "3.114.17",
     "lucide-react": "0.435.0",
     "@local/utils": "workspace:*",
     "class-variance-authority": "0.7.0",
